@@ -37,7 +37,7 @@
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="65" max="32767" attributes="0"/>
+              <EmptySpace pref="59" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -103,24 +103,6 @@
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel4" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txt_id" max="32767" attributes="0"/>
-                              <Component id="txt_nombre" max="32767" attributes="0"/>
-                              <Component id="cbx_nivel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txt_edad" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txt_contacto" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Component id="btn_actualizar" min="-2" pref="121" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -130,6 +112,37 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btn_nuevo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel4" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                  <Component id="lbl_estado" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txt_id" max="32767" attributes="0"/>
+                                      <Component id="txt_nombre" max="32767" attributes="0"/>
+                                      <Component id="cbx_nivel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txt_edad" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txt_contacto" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -164,7 +177,13 @@
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txt_contacto" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_estado" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btn_actualizar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btn_consultar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -306,6 +325,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Actualizar "/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_actualizarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_consultar">
           <Properties>
@@ -314,6 +336,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Consultar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_consultarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_guardar">
           <Properties>
@@ -322,6 +347,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_guardarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_nuevo">
           <Properties>
@@ -329,6 +357,21 @@
               <Image iconType="3" name="/imagenes/nuevo.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nuevo"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_nuevoActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel8">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Estado:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel9">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_estado">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="``     ``"/>
           </Properties>
         </Component>
       </SubComponents>

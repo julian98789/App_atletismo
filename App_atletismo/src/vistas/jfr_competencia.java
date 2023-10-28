@@ -1,18 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package vistas;
 
-/**
- *
- * @author julian
- */
-public class jfr_competencia extends javax.swing.JFrame {
+import java.util.LinkedList;
+import javax.swing.JOptionPane;
+import modelo.cls_competencia;
+import modelo.cls_participante;
 
-    /**
-     * Creates new form jfr_competencia
-     */
+public class jfr_competencia extends javax.swing.JFrame {
+  
+    LinkedList<cls_competencia> objCompetencia = new  LinkedList<>();
+    LinkedList<cls_participante> objParticipantes = new LinkedList<>();
+    boolean bln_sw_participantes ;
+    int int_posicion_participantes;
+    
     public jfr_competencia() {
         initComponents();
     }
@@ -45,6 +45,9 @@ public class jfr_competencia extends javax.swing.JFrame {
         btn_consultar = new javax.swing.JButton();
         btn_guardar = new javax.swing.JButton();
         btn_nuevo = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        lbl_estado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -141,15 +144,39 @@ public class jfr_competencia extends javax.swing.JFrame {
 
         btn_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
         btn_actualizar.setText("Actualizar ");
+        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actualizarActionPerformed(evt);
+            }
+        });
 
         btn_consultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
         btn_consultar.setText("Consultar");
+        btn_consultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_consultarActionPerformed(evt);
+            }
+        });
 
         btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
         btn_guardar.setText("Guardar");
+        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarActionPerformed(evt);
+            }
+        });
 
         btn_nuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nuevo.png"))); // NOI18N
         btn_nuevo.setText("Nuevo");
+        btn_nuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_nuevoActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Estado:");
+
+        lbl_estado.setText("``     ``");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -160,21 +187,6 @@ public class jfr_competencia extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_id)
-                            .addComponent(txt_nombre)
-                            .addComponent(cbx_nivel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_edad)
-                            .addComponent(txt_contacto))
-                        .addGap(53, 53, 53))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -183,7 +195,32 @@ public class jfr_competencia extends javax.swing.JFrame {
                         .addComponent(btn_guardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_nuevo)
-                        .addGap(35, 35, 35))))
+                        .addGap(35, 35, 35))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel8)
+                                .addGap(12, 12, 12)
+                                .addComponent(lbl_estado)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel9)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_id)
+                                    .addComponent(txt_nombre)
+                                    .addComponent(cbx_nivel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txt_edad)
+                                    .addComponent(txt_contacto))
+                                .addGap(53, 53, 53))))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,7 +246,12 @@ public class jfr_competencia extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txt_contacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(2, 2, 2)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addComponent(lbl_estado))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_actualizar)
                     .addComponent(btn_consultar)
@@ -234,7 +276,7 @@ public class jfr_competencia extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         pack();
@@ -255,6 +297,63 @@ public class jfr_competencia extends javax.swing.JFrame {
     private void txt_contactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_contactoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_contactoActionPerformed
+
+    private void btn_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevoActionPerformed
+        txt_contacto.setText("");
+        txt_edad.setText("");
+        txt_id.setText("");
+        txt_nombre.setText("");
+        cbx_nivel.setSelectedIndex(0);
+        txt_contacto.requestFocus();
+    }//GEN-LAST:event_btn_nuevoActionPerformed
+
+    private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
+        if (Integer.parseInt(txt_edad.getText())>= 18){
+             int int_pos =objParticipantes.size();
+         
+        objParticipantes.add(new cls_participante (txt_id.getText(), txt_nombre.getText(),
+        Integer.parseInt(txt_edad.getText()),(String) cbx_nivel.getSelectedItem(),
+        txt_contacto.getText()));
+            JOptionPane.showMessageDialog(null, "Paraticipante registrado con exito",
+                    "Guardar", JOptionPane.INFORMATION_MESSAGE);
+           objParticipantes.get(int_pos).setInt_estado(1);
+   
+        }else{
+            JOptionPane.showMessageDialog(null, "No cumples con la edad requerida", 
+                    "Guardar", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
+        
+    }//GEN-LAST:event_btn_guardarActionPerformed
+
+    private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_actualizarActionPerformed
+
+    private void btn_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultarActionPerformed
+
+        int_posicion_participantes = 0;
+        bln_sw_participantes = false;
+        
+        for (int i=0; i<objParticipantes.size();i++){
+            if(txt_id.getText().equals(objParticipantes.get(i).getStr_id())){
+                bln_sw_participantes = true;
+                int_posicion_participantes = i;
+                break;
+            }
+        }
+        if(bln_sw_participantes == false){
+            JOptionPane.showMessageDialog(null, "No se encontraron reguistros", 
+                    "Consultar", JOptionPane.ERROR_MESSAGE);
+        }else{
+            txt_contacto.setText(objParticipantes.get(int_posicion_participantes).getStr_contacto());
+            txt_edad.setText(""+ objParticipantes.get(int_posicion_participantes).getInt_edad());
+            txt_nombre.setText(objParticipantes.get(int_posicion_participantes).getStr_nombre());
+            cbx_nivel.setSelectedItem(""+objParticipantes.get(int_posicion_participantes).getStr_nivel());
+            lbl_estado.setText(""+ objParticipantes.get(int_posicion_participantes).getInt_estado());
+        }
+    }//GEN-LAST:event_btn_consultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -304,9 +403,12 @@ public class jfr_competencia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lbl_estado;
     private javax.swing.JTextField txt_contacto;
     private javax.swing.JTextField txt_edad;
     private javax.swing.JTextField txt_id;
